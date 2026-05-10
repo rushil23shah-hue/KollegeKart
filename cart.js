@@ -1,5 +1,6 @@
 // SELECT ELEMENTS
-
+const buyButton =
+document.querySelector(".buy-btn");
 const cartContainer =
 document.querySelector(".cart-container");
 
@@ -102,3 +103,40 @@ function removeFromCart(index) {
 // INITIAL CALL
 
 displayCart();
+buyButton.addEventListener(
+  "click",
+  function(){
+
+    // CHECK EMPTY CART
+
+    if(cart.length === 0){
+
+      alert("Your cart is empty!");
+
+      return;
+    }
+
+    // ORDER MESSAGE
+
+    alert(
+      "Order placed successfully! 🎉\n\n" +
+
+      "Please collect your order " +
+
+      "from the college campus " +
+
+      "on the next working day."
+    );
+
+    // CLEAR CART
+
+    localStorage.removeItem("cart");
+
+    cart = [];
+
+    // RE-RENDER
+
+    displayCart();
+
+  }
+);
